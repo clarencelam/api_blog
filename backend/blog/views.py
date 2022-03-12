@@ -24,3 +24,14 @@ class BlogPostFeaturedView(ListAPIView):
     permission_classes = (permissions.AllowAny, )
 
 class BlogPostCategoryView(APIView):
+    serializer_class = BlogPostSerializer
+    permission_classes = (permissions.Allowany, )
+
+    def post(self, request, format=None):
+        date = self.request.data
+        category = data['category ']
+        queryset = BlogPost.objects.all('-date_created').filter(category__iexact=category)
+
+        serializer = BlogPostSerializer(queryset, many=True)
+
+        return Response(serializer.data)

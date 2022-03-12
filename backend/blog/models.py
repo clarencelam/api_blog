@@ -23,8 +23,9 @@ class BlogPost(models.Model):
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title) #slugify function we imported will turn title into slug
-        queryset = BlogPost.objects.all().filter(slug__iexect=original_slug).count() # Code to ensure all slugs are original 
-
+        
+        # Following code is to ensure all slugs are original 
+        queryset = BlogPost.objects.all().filter(slug__iexect=original_slug).count() 
         count = 1
         slug = original_slug
         while(queryset):
