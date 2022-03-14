@@ -29,7 +29,7 @@ class BlogPostCategoryView(APIView):
 
     def post(self, request, format=None):
         date = self.request.data
-        category = data['category ']
+        category = data['category']
         queryset = BlogPost.objects.all('-date_created').filter(category__iexact=category)
 
         serializer = BlogPostSerializer(queryset, many=True)
