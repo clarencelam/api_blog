@@ -28,7 +28,7 @@ class BlogPostCategoryView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
-        date = self.request.data
+        data = self.request.data
         category = data['category']
         queryset = BlogPost.objects.all('-date_created').filter(category__iexact=category)
 
