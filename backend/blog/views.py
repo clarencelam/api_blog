@@ -25,7 +25,7 @@ class BlogPostFeaturedView(ListAPIView):
 
 class BlogPostCategoryView(APIView):
     serializer_class = BlogPostSerializer
-    permission_classes = (permissions.Allowany, )
+    permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
         date = self.request.data
