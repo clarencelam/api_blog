@@ -9,6 +9,6 @@ class BlogPostAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     list_display_links = ('id','title')
     search_field = ('title',)
     list_per_page = 25
-    summernote_fields = ('content',) #Text fields named "content" will be a summernote widget
+    summernote_fields = ('content',) #Text fields named "content" (in BlogPost Models) will be a summernote widget
 
 admin.site.register(BlogPost, BlogPostAdmin)

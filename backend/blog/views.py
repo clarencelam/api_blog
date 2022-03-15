@@ -27,7 +27,7 @@ class BlogPostCategoryView(APIView):
     serializer_class = BlogPostSerializer
     permission_classes = (permissions.AllowAny,)
 
-    def post(self, request, format=None):
+    def post(self, request, format=None): #handling API POST requests
         data = self.request.data
         category = data['category']
         queryset = BlogPost.objects.order_by('-date_created').filter(category__iexact=category)
