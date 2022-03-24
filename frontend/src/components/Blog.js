@@ -22,7 +22,9 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
+                console.log(process.env.REACT_APP_API_URL)
+                const res = await axios.get(`localhost:8000/api/blog/`);
+                console.log(res)
                 setBlogs(res.data);
             }
             catch (err) {
@@ -58,7 +60,6 @@ const Blog = () => {
                 </div>
             );
         });
-
         for (let i = 0; i < list.length; i += 2) {
             result.push(
                 <div key={i} className="row mb-2">

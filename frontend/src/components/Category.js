@@ -19,7 +19,8 @@ const Category = (props) => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/blog/category`, { category }, config);
+                console.log({url: process.env.REACT_APP_API_URL})
+                const res = await axios.post(`http://localhost:8000/api/blog/category`, { category }, config);
                 setBlogs(res.data);
             }
             catch (err) {
@@ -40,6 +41,7 @@ const Category = (props) => {
         let list = [];
         let result = [];
 
+        console.log({blogs})
         blogs.map(blogPost => {
             return list.push(
                 <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -51,7 +53,7 @@ const Category = (props) => {
                         <Link to={`/blog/${blogPost.slug}`} className="stretched-link">Continue reading</Link>
                     </div>
                     <div className="col-auto d-none d-lg-block">
-                        <img width='200' height='250' src={blogPost.thumbnail} alt="thumbnail" />
+                        <img width='200' height='250' src={`${process.env.REACT_APP_API_URL}${blogPost.thumbnail}`} alt='thumbnail' />
                     </div>
                 </div>
             );
