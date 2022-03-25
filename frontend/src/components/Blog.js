@@ -23,7 +23,7 @@ const Blog = () => {
         const fetchBlogs = async () => {
             try {
                 console.log(process.env.REACT_APP_API_URL)
-                const res = await axios.get(`localhost:8000/api/blog/`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
                 console.log(res)
                 setBlogs(res.data);
             }
